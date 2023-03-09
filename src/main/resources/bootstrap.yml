@@ -1,0 +1,30 @@
+server:
+  port: 15000
+  servlet:
+    context-path: /authentication
+spring:
+  profiles:
+    active: dev
+  application:
+    name: lucky-unified-identity-authentication
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+swagger:
+  enable: true
+  group-name: lucky
+  base-package: io.lucky
+  title: lucky
+  description: 学习
+  terms-of-service-url: /
+  contact:
+    name: 仲金鹏
+    link: github:com
+    email: jpzhong1994@gmail.com
+  version: 0.0.1
+  license: /
+  license-url: /
+
+
+

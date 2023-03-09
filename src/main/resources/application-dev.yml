@@ -1,0 +1,36 @@
+logging:
+  level:
+    org:
+      springframework: DEBUG
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8849
+  redis:
+    host: 127.0.0.1
+    port: 6379
+
+# 授权服务器
+authorization-server:
+  token-type: jwt
+  refresh-token: true
+  access-token-validity-seconds: 7200
+  refresh-token-validity-seconds: 0
+  clients:
+    - clientId: pc
+      resourceIds: ${spring.application.name}
+      clientSecret: X0wZ7BTpcDKH42je
+      scope: write,read
+      authorizedGrantTypes: password
+    - clientId: app
+      resourceIds: ${spring.application.name}
+      clientSecret: X0wZ7BTpcDKH42je
+      scope: read
+      authorizedGrantTypes:
+       - password
+       - verificationCode
