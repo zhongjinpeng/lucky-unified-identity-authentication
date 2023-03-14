@@ -9,6 +9,7 @@ import io.lucky.unified.identity.authentication.model.vo.TokenVO;
 import io.lucky.utils.GsonUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -34,6 +35,7 @@ import java.util.Map;
 @Api(tags = "登录相关接口")
 @RestController
 @RequestMapping("/login")
+@Slf4j
 public class LoginController {
 
     @Autowired
@@ -54,6 +56,7 @@ public class LoginController {
     }
 
     private Map forwardLoginRequest(HttpServletRequest request, LoginRequest loginRequest){
+        log.debug("login request param:{}",GsonUtil.GsonToString(loginRequest));
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
         headers.setBasicAuth(loginRequest.clientId(), loginRequest.clientSecret());
