@@ -5,7 +5,6 @@ import io.lucky.security.model.LuckyRole;
 import io.lucky.security.model.LuckyUser;
 import io.lucky.utils.MD5Util;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +20,10 @@ public class AuthorizationUserServiceImpl implements AuthorizationUserService {
         luckyUser.setUsername("lucky");
         luckyUser.setPhone("13913859520");
         luckyUser.setPassword(MD5Util.MD5WithSalt("123456"));
+        luckyUser.setEnabled(false);
+        luckyUser.setLocked(false);
+        luckyUser.setExpired(false);
+        luckyUser.setCredentialsExpired(false);
 
         List<LuckyRole> roleList = new ArrayList<>();
         LuckyRole luckyRole = new LuckyRole();
@@ -41,6 +44,10 @@ public class AuthorizationUserServiceImpl implements AuthorizationUserService {
             luckyUser.setUserId(1L);
             luckyUser.setUsername("lucky");
             luckyUser.setPhone("13913859520");
+            luckyUser.setEnabled(false);
+            luckyUser.setLocked(false);
+            luckyUser.setExpired(false);
+            luckyUser.setCredentialsExpired(false);
 
             List<LuckyRole> roleList = new ArrayList<>();
             LuckyRole luckyRole = new LuckyRole();
